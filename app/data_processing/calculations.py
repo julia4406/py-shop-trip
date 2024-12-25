@@ -38,10 +38,10 @@ def attending_shop(customer: Customer, shop: Shop) -> None:
     print("You have bought:")
     for item, quantity in customer.product_cart.items():
         price = quantity * shop.products[item]
-        price = price
+        format_price = int(price) if price == int(price) else price
+        format_item = item + ("s" if quantity > 1 else "")
         print(
-            f"{quantity} {item}{"s" if quantity > 1 else ""} "
-            f"for {int(price) if price == int(price) else price} dollars"
+            f"{quantity} {format_item} for {format_price} dollars"
         )
     print(f"Total cost is {groceries_cost(customer, shop)} dollars")
     print("See you again!")
